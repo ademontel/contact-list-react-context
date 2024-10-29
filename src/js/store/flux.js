@@ -49,6 +49,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await resp.json();
 				console.log(data);
 				setStore({contacts: data.contacts})
+			},
+			createContact: async (newContact) => {
+				const myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+				const resp = await fetch(process.env.BACKEND_URL+`agendas/ademontel/contacts`, {
+					method: 'POST',
+					headers: myHeaders,
+					body: JSON.stringify(newContact),
+				});
+				if(resp.ok) {
+					await getActions().getContacts()
+				}
 			}
 		}
 	};
