@@ -60,11 +60,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			//función para importar contacto
 			getContacts: async () => {
+				const store = getStore();
+				const actions = getActions();
 				const resp = await fetch(process.env.BACKEND_URL+`agendas/ademontel`);
 				if(resp.status == 404){
-					await getActions().createAgenda()  // Se crea la nueva agenda usando el método Actions
+					await getActions().createAgenda();
+					store.newContacts.forEach(async (item) => {
+						await actions.createContact(item)	
+					})
+					// Se crea la nueva agenda usando el método Actions
 					return null
 				}
+				
+					
 				const data = await resp.json();
 				console.log(data);
 				setStore({contacts: data.contacts})
