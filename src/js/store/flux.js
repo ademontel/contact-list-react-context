@@ -17,6 +17,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 			contacts: [
 
 			],
+
+			newContacts: [
+				{
+					name: "Ronaldo Nazario", 
+					email: "elgordoronaldo@gmail.com", 
+					phone: "0993521455", 
+					address: "Av. Siempre Viva 1234" 
+				},
+				{
+					name: "Nicolás Maduro", 
+					email: "sigomadurando@commie.com", 
+					phone: "512455258", 
+					address: "124 Conch St., Bikini Bottom" 
+				}
+			]
 			
 		},
 		actions: {
