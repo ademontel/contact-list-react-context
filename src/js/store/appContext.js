@@ -31,6 +31,12 @@ const injectContext = PassedComponent => {
 			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
+
+		if (state.store.contacts.length==0) {
+				state.store.newContacts.map((item, index) => {
+				state.actions.createContact(item)	
+				})
+			}
 			state.actions.getContacts();
 		}, []);
 
